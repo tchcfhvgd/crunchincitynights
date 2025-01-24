@@ -28,6 +28,7 @@ class ClientPrefs
 
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
+	public static var mechanics:Bool = true;
 	public static var opponentStrums:Bool = true;
 	public static var showFPS:Bool = true;
 	public static var flashing:Bool = true;
@@ -169,6 +170,7 @@ class ClientPrefs
 		FlxG.save.data.chartPresets = chartPresets;
 
 		FlxG.save.data.downScroll = downScroll;
+		FlxG.save.data.mechanics = mechanics;
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.opponentStrums = opponentStrums;
 		FlxG.save.data.showFPS = showFPS;
@@ -270,6 +272,10 @@ class ClientPrefs
 		if (FlxG.save.data.middleScroll != null)
 		{
 			middleScroll = FlxG.save.data.middleScroll;
+		}
+		if (FlxG.save.data.mechanics != null)
+		{
+			mechanics = FlxG.save.data.mechanics;
 		}
 		if (FlxG.save.data.opponentStrums != null)
 		{
