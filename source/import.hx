@@ -25,6 +25,7 @@ import hxvlc.flixel.*;
 #end
 import Init;
 import funkin.Paths;
+import mobile.StorageUtil;
 import funkin.data.ClientPrefs;
 import funkin.data.Conductor;
 import funkin.utils.CoolUtil;
