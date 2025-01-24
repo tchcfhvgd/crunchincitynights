@@ -20,6 +20,9 @@ class MainMenuState extends MusicBeatState
         setOnScript('persistentUpdate', persistentUpdate);
 	setOnScript('MenuButton', MenuButton);
         
+        if (isHardcodedState())
+        {
+        
         FlxG.cameras.reset();
 		FlxG.camera.followLerp = 0.3;
 
@@ -71,6 +74,8 @@ class MainMenuState extends MusicBeatState
 
 		for (i in members)
 			if (i is FlxSprite) cast(i, FlxSprite).antialiasing = ClientPrefs.globalAntialiasing;
+			
+		}
 
         super.create();
         
@@ -86,6 +91,9 @@ class MainMenuState extends MusicBeatState
 			@:privateAccess if (FreeplayState.vocals != null) FreeplayState.vocals.volume += addVol;
 		}
 
+		if (isHardcodedState())
+		{
+		
 		if (canSelect)
 		{
 			if (controls.ACCEPT) hideAndLoad(curSelected);
@@ -97,6 +105,8 @@ class MainMenuState extends MusicBeatState
 				canSelect = false;
 				FlxG.switchState(() -> new funkin.states.editors.MasterEditorMenu());
 			}
+		}
+		
 		}
 
 		super.update(elapsed);
