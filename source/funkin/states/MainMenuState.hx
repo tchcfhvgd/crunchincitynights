@@ -17,7 +17,9 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-
+        setUpScript('MainMenuState');
+        setOnScript('persistentUpdate', persistentUpdate);
+        
         FlxG.cameras.reset();
 		FlxG.camera.followLerp = 0.3;
 
@@ -72,6 +74,8 @@ class MainMenuState extends MusicBeatState
 			if (i is FlxSprite) cast(i, FlxSprite).antialiasing = ClientPrefs.globalAntialiasing;
 
         super.create();
+        
+        callOnScript('onCreatePost', []);
 	}
 
 	override function update(elapsed:Float)
