@@ -317,6 +317,7 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		}
 		callOnScript('onUpdatePost', [elapsed]);
+                callOnScript('restartSong', [noTrans]);
 	}
 
 	public static function restartSong(noTrans:Bool = false)
@@ -331,8 +332,6 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		FlxG.resetState();
-
-		callOnScript('restartSong', [noTrans]);
 	}
 
 	override function destroy()
