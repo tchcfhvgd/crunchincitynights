@@ -61,7 +61,7 @@ class MusicBeatSubstate extends FlxSubState
 
 		if (FileSystem.exists(scriptFile))
 		{
-			script = OverrideStateScript.fromFile(scriptFile);
+			script = OverrideSubStateScript.fromFile(scriptFile);
 			trace('$scriptName script [$scriptFile] found!');
 		}
 		else
