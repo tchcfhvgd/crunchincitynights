@@ -1,6 +1,7 @@
 package funkin.objects;
 
 import flixel.FlxSprite;
+import flixel.text.FlxText;
 
 class TextTracker extends Alphabet
 {
@@ -9,13 +10,20 @@ class TextTracker extends Alphabet
 	public var sprTracker:FlxSprite;
 	public var copyVisible:Bool = true;
 	public var copyAlpha:Bool = false;
+	public var Text:FlxText;
 
-	public function new(text:String = "", ?offsetX:Float = 0, ?offsetY:Float = 0, ?bold = false, ?scale:Float = 1)
+	public function new(text:String = "", ?offsetX:Float = 0, ?offsetY:Float = 0, ?scale:Float = 0, ?qqqeb:Float = 0)
 	{
-		super(0, 0, text, bold, false, 0.05, scale);
+		super(0, 0, text);
 		isMenuItem = false;
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
+		
+		Text = new FlxText(offsetX, offsetY, qqqeb, text, scale);
+		#end
+		Text.setFormat(Paths.font("candy.otf"), scale, FlxColor.BLACK, LEFT);
+		//Text.screenCenter(Y);
+		add(Text);
 	}
 
 	override function update(elapsed:Float)
