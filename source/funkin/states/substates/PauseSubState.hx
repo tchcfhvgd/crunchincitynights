@@ -42,7 +42,13 @@ class PauseSubState extends MusicBeatSubstate
 	override function create()
 	{
 		var cam:FlxCamera = CameraUtil.lastCamera;
-
+		
+		setUpScript('substates/PauseSubState');
+		setOnScript('cam', cam);
+		setOnScript('pauseMusic', pauseMusic);
+		
+		if (isHardcodedState())
+		{
 		if (DifficultyUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); // No need to change difficulty if there is only one!
 
 		if (PlayState.chartingMode #if debug || true #end)
@@ -73,6 +79,7 @@ class PauseSubState extends MusicBeatSubstate
 			difficultyChoices.push(diff);
 		}
 		difficultyChoices.push('BACK');
+		}
 
 		pauseMusic = new FlxSound();
 		try
@@ -92,6 +99,9 @@ class PauseSubState extends MusicBeatSubstate
 
 		FlxG.sound.list.add(pauseMusic);
 
+		
+		if (isHardcodedState())
+		{
 		var bg:FlxSprite = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		bg.setGraphicSize(cam.width, cam.height);
 		bg.updateHitbox();
@@ -153,6 +163,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(grpMenuShit);
 
 		regenMenu();
+		}
 		cameras = [cam];
 		super.create();
 	}
@@ -164,6 +175,8 @@ class PauseSubState extends MusicBeatSubstate
 		if (pauseMusic.volume < 0.5) pauseMusic.volume += 0.01 * elapsed;
 
 		super.update(elapsed);
+		if (isHardcodedState())
+		{
 		if (skipTimeText != null && skipTimeTracker != null) updateSkipTextStuff();
 
 		if (controls.UI_UP_P)
@@ -302,6 +315,8 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.chartingMode = false;
 			}
 		}
+		}
+		callOnScript('onUpdatePost', [elapsed]);
 	}
 
 	public static function restartSong(noTrans:Bool = false)
