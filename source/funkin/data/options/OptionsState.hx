@@ -76,6 +76,8 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
+		if (isHardcodedState())
+		{
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.color = 0xFFea71fd;
 		bg.updateHitbox();
@@ -100,22 +102,30 @@ class OptionsState extends MusicBeatState
 		selectorRight = new Alphabet(0, 0, '<', true, false);
 		add(selectorRight);
 
+		}
+
 		changeSelection();
 		ClientPrefs.saveSettings();
 
 		super.create();
+
+		callOnScript('onCreatePost', []);
 	}
 
 	override function closeSubState()
 	{
 		super.closeSubState();
 		ClientPrefs.saveSettings();
+
+		callOnScript('onCloseSubState', []);
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
+		if (isHardcodedState())
+		{
 		if (controls.UI_UP_P)
 		{
 			changeSelection(-1);
@@ -141,10 +151,15 @@ class OptionsState extends MusicBeatState
 		{
 			openSelectedSubstate(options[curSelected]);
 		}
+		}
+
+		callOnScript('onUpdatePost', [elapsed]);
 	}
 
 	function changeSelection(change:Int = 0)
 	{
+		if (isHardcodedState())
+		{
 		curSelected += change;
 		if (curSelected < 0) curSelected = options.length - 1;
 		if (curSelected >= options.length) curSelected = 0;
@@ -167,5 +182,6 @@ class OptionsState extends MusicBeatState
 			}
 		}
 		FlxG.sound.play(Paths.sound('scrollMenu'));
+		}
 	}
 }
