@@ -20,7 +20,7 @@ class OverrideSubStateScript extends FunkinIris
 		trace('is [$name] custom? [$customMenu]');
 
 		set("state", flixel.FlxG.state);
-		set("close", FlxG.state.close);
+		set("close", flixel.FlxSubState.close);
 		set("add", FlxG.state.add);
 		set("remove", FlxG.state.remove);
 		set("insert", FlxG.state.insert);
