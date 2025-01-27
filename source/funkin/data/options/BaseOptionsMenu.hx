@@ -42,7 +42,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	private var descBox:FlxSprite;
 	private var descText:FlxText;
 
-	public var bg:FlxSprite
+	public var bg:FlxSprite;
 	public var title:String;
 	public var rpcTitle:String;
 
