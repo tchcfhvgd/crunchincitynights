@@ -43,7 +43,7 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		var cam:FlxCamera = CameraUtil.lastCamera;
 		
-		setUpScript('substates/PauseSubState');
+		setUpScript('PauseSubState');
 		setOnScript('cam', cam);
 		setOnScript('pauseMusic', pauseMusic);
 		
