@@ -317,7 +317,7 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		}
 		callOnScript('onUpdatePost', [elapsed]);
-                callOnScript('restartSong', restartSong[noTrans]);
+                callOnScript('restartSong', restartSong());
 	}
 
 	public static function restartSong(noTrans:Bool = false)
