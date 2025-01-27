@@ -9,7 +9,7 @@ class TextTracker extends FlxText {
     public var sprTracker:FlxSprite;
     public var offset_x:Float = 0;
     public var offset_y:Float = 0;
-    public var frameHeight:Float = 0;
+    public var textFrameHeight:Float = 0;
 
     public function new(Text:String, X:Float, Y:Float, Size:Int, MaxWidth:Int) {
         super(X, Y, MaxWidth, Text, Size);
@@ -18,9 +18,7 @@ class TextTracker extends FlxText {
         this.scrollFactor.set();
         this.alignment = "left";
 
-        // Calculate frame height based on text length and max width
-        var textHeight = Std.int(FlxG.bitmapFont.measureText(Text, Size).height);
-        this.frameHeight = Math.max(this.height, textHeight);
+        this.textFrameHeight = this.textField.textHeight;
     }
 
     override public function update(elapsed:Float):Void {
@@ -37,8 +35,6 @@ class TextTracker extends FlxText {
     public function setTextContent(newText:String):Void {
         this.text = newText;
 
-        // Recalculate frame height based on new text length
-        var textHeight = Std.int(FlxG.bitmapFont.measureText(newText, this.size).height);
-        this.frameHeight = Math.max(this.height, textHeight);
+        this.textFrameHeight = this.textField.textHeight;
     }
 }
