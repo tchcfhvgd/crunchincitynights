@@ -46,6 +46,7 @@ class PauseSubState extends MusicBeatSubstate
 		setUpScript('PauseSubState');
 		setOnScript('cam', cam);
 		setOnScript('pauseMusic', pauseMusic);
+		setOnScript('this', this);
 		
 		if (isHardcodedState())
 		{
