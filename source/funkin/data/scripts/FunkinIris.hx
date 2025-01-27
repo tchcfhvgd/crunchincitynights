@@ -288,6 +288,7 @@ class FunkinIris extends FunkinScript
 		set("PlayState", PlayState);
 		set("FunkinLua", FunkinLua);
 		set("FunkinIris", FunkinIris);
+		set("Highscore", Highscore);
 
 		set('WindowUtil', funkin.utils.WindowUtil); // temp till i fix some shit
 
