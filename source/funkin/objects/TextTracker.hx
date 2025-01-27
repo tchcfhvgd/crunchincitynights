@@ -20,7 +20,6 @@ class TextTracker extends Alphabet
 		this.offsetY = offsetY;
 		
 		Text = new FlxText(offsetX, offsetY, qqqeb, text, scale);
-		#end
 		Text.setFormat(Paths.font("candy.otf"), scale, FlxColor.BLACK, LEFT);
 		//Text.screenCenter(Y);
 		add(Text);
