@@ -3,6 +3,7 @@ package funkin.backend;
 import funkin.backend.PlayerSettings;
 import funkin.data.*;
 import flixel.FlxSubState;
+import funkin.data.scripts.*;
 
 class MusicBeatSubstate extends FlxSubState
 {
@@ -21,6 +22,56 @@ class MusicBeatSubstate extends FlxSubState
 	private var curDecBeat:Float = 0;
 	private var controls(get, never):Controls;
 
+	public var scripted:Bool = false;
+	public var scriptName:String = 'Placeholder';
+	public var script:OverrideStateScript;
+
+	inline function setOnScript(name:String, value:Dynamic) //depreciate this soon because the macro does this now? macro still needs more work i think though
+	{
+		if (script != null) script.set(name, value);
+	}
+
+	public function callOnScript(name:String, vars:Array<Any>, ignoreStops:Bool = false)
+	{
+		var returnVal:Dynamic = Globals.Function_Continue;
+		if (script != null)
+		{
+			var ret:Dynamic = script.call(name, vars);
+			if (ret == Globals.Function_Halt)
+			{
+				ret = returnVal;
+				if (!ignoreStops) return returnVal;
+			};
+
+			if (ret != Globals.Function_Continue && ret != null) returnVal = ret;
+
+			if (returnVal == null) returnVal = Globals.Function_Continue;
+		}
+		return returnVal;
+	}
+
+	inline function isHardcodedState() return (script != null && !script.customMenu) || (script == null);
+
+	public function setUpScript(s:String = 'Placeholder')
+	{
+		scripted = true;
+		scriptName = s;
+
+		var scriptFile = FunkinIris.getPath('scripts/menus/substates/$scriptName', false);
+
+		if (FileSystem.exists(scriptFile))
+		{
+			script = OverrideStateScript.fromFile(scriptFile);
+			trace('$scriptName script [$scriptFile] found!');
+		}
+		else
+		{
+			// trace('$scriptName script [$scriptFile] is null!');
+		}
+
+		callOnScript('onCreate', []);
+	}
+	
 	inline function get_controls():Controls return PlayerSettings.player1.controls;
 
 	override function update(elapsed:Float)
@@ -34,6 +85,8 @@ class MusicBeatSubstate extends FlxSubState
 		if (oldStep != curStep && curStep > 0) stepHit();
 
 		super.update(elapsed);
+		
+		callOnScript('onUpdate', [elapsed]);
 	}
 
 	private function updateBeat():Void
