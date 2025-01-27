@@ -24,7 +24,7 @@ class MusicBeatSubstate extends FlxSubState
 
 	public var scripted:Bool = false;
 	public var scriptName:String = 'Placeholder';
-	public var script:OverrideStateScript;
+	public var script:OverrideSubStateScript;
 
 	inline function setOnScript(name:String, value:Dynamic) //depreciate this soon because the macro does this now? macro still needs more work i think though
 	{
