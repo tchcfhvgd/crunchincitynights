@@ -12,7 +12,7 @@ class TextTracker extends Alphabet
 	public var copyAlpha:Bool = false;
 	public var Text:FlxText;
 
-	public function new(text:String = "", ?offsetX:Float = 0, ?offsetY:Float = 0, ?scale:Float = 0, ?qqqeb:Float = 0)
+	public function new(text:String = "", ?offsetX:Float = 0, ?offsetY:Float = 0, ?scale:Int = 0, ?qqqeb:Float = 0)
 	{
 		super(0, 0, text);
 		isMenuItem = false;
