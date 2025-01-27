@@ -55,6 +55,8 @@ class StoryMenuState extends MusicBeatState
 		if (curWeek >= WeekData.weeksList.length) curWeek = 0;
 		persistentUpdate = persistentDraw = true;
 
+		setUpScript('StoryMenuState');
+		
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
 		scoreText.setFormat("VCR OSD Mono", 32);
 
@@ -183,6 +185,8 @@ class StoryMenuState extends MusicBeatState
 		changeDifficulty();
 
 		super.create();
+
+		callOnScript('onCreatePost', []);
 	}
 
 	override function closeSubState()
