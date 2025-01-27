@@ -331,6 +331,8 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		FlxG.resetState();
+
+		callOnScript('restartSong', [noTrans]);
 	}
 
 	override function destroy()
@@ -338,6 +340,8 @@ class PauseSubState extends MusicBeatSubstate
 		pauseMusic.destroy();
 
 		super.destroy();
+
+		callOnScript('destroy', []);
 	}
 
 	function changeSelection(change:Int = 0):Void
