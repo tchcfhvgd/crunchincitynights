@@ -1,45 +1,44 @@
 package funkin.objects;
 
-import flixel.FlxSprite;
 import flixel.text.FlxText;
+import flixel.FlxG;
+import flixel.util.FlxColor;
+import flixel.FlxSprite;
 
-class TextTracker extends Alphabet
-{
-	public var offsetX:Float = 0;
-	public var offsetY:Float = 0;
-	public var sprTracker:FlxSprite;
-	public var copyVisible:Bool = true;
-	public var copyAlpha:Bool = false;
-	public var Text:FlxText;
+class TextTracker extends FlxText {
+    public var sprTracker:FlxSprite;
+    public var offset_x:Float = 0;
+    public var offset_y:Float = 0;
+    public var frameHeight:Float = 0;
 
-	public function new(text:String = "", ?offsetX:Float = 0, ?offsetY:Float = 0, ?scale:Int = 0, ?qqqeb:Float = 0)
-	{
-		super(0, 0, text);
-		isMenuItem = false;
-		this.offsetX = offsetX;
-		this.offsetY = offsetY;
-		
-		Text = new FlxText(offsetX, offsetY, qqqeb, text, scale);
-		Text.setFormat(Paths.font("candy.otf"), scale, FlxColor.BLACK, LEFT);
-		//Text.screenCenter(Y);
-		add(Text);
-	}
+    public function new(Text:String, X:Float, Y:Float, Size:Int, MaxWidth:Int) {
+        super(X, Y, MaxWidth, Text, Size);
 
-	override function update(elapsed:Float)
-	{
-		if (sprTracker != null)
-		{
-			setPosition(sprTracker.x + offsetX, sprTracker.y + offsetY);
-			if (copyVisible)
-			{
-				visible = sprTracker.visible;
-			}
-			if (copyAlpha)
-			{
-				alpha = sprTracker.alpha;
-			}
-		}
+        this.setFormat(Paths.font("candy.otf"), Size, FlxColor.BLACK, "left");
+        this.scrollFactor.set();
+        this.alignment = "left";
 
-		super.update(elapsed);
-	}
+        // Calculate frame height based on text length and max width
+        var textHeight = Std.int(FlxG.bitmapFont.measureText(Text, Size).height);
+        this.frameHeight = Math.max(this.height, textHeight);
+    }
+
+    override public function update(elapsed:Float):Void {
+        super.update(elapsed);
+
+        // Update position based on the tracked sprite's position
+        if (sprTracker != null) {
+            this.x = sprTracker.x + offset_x;
+            this.y = sprTracker.y + offset_y;
+        }
+    }
+
+    // Function to set the text content
+    public function setTextContent(newText:String):Void {
+        this.text = newText;
+
+        // Recalculate frame height based on new text length
+        var textHeight = Std.int(FlxG.bitmapFont.measureText(newText, this.size).height);
+        this.frameHeight = Math.max(this.height, textHeight);
+    }
 }
