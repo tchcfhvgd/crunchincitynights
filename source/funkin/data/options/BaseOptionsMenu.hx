@@ -132,9 +132,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		reloadCheckboxes();
 
 		callOnScript('onCreatePost', []);
-		callOnScript('titleText', titleText);
-		callOnScript('grpOptions', grpOptions);
-		callOnScript('bg', bg);
+		setOnScript('titleText', titleText);
+		setOnScript('grpOptions', grpOptions);
+		setOnScript('bg', bg);
 	}
 
 	public function addOption(option:Option)
