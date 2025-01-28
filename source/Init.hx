@@ -6,17 +6,18 @@ import flixel.input.keyboard.FlxKey;
 import lime.app.Application;
 import funkin.data.*;
 
+using StringTools;
+typedef SongData =
+{
+    finished:Bool,
+    fc:Bool
+}
+
 class Init extends FlxState
 {
 	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
 	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
 	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
-
-	typedef SongData =
-{
-    finished:Bool,
-    fc:Bool
-}
 
 var songMap:StringMap = new StringMap();
 var songs = ['crunch', 'milkyway', 'choke-a-lot', 'doubt', 'hope', 'reunion', 'smile', 'order-up', 'last-course', 'soundtest', 'alert', 'legacy', 'rumor', 'threat', 'rattled', 'crunchmix', 'yolo', 'harness', 'ravegirl'];
