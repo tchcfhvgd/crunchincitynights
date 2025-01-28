@@ -4,6 +4,7 @@ import flixel.FlxState;
 import flixel.FlxG;
 import flixel.input.keyboard.FlxKey;
 import lime.app.Application;
+import funkin.data.*;
 
 class Init extends FlxState
 {
@@ -11,8 +12,44 @@ class Init extends FlxState
 	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
 	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
 
+	typedef SongData =
+{
+    finished:Bool,
+    fc:Bool
+}
+
+var songMap:StringMap = new StringMap();
+var songs = ['crunch', 'milkyway', 'choke-a-lot', 'doubt', 'hope', 'reunion', 'smile', 'order-up', 'last-course', 'soundtest', 'alert', 'legacy', 'rumor', 'threat', 'rattled', 'crunchmix', 'yolo', 'harness', 'ravegirl'];
+
+// porting old save stuff over to modern save format
+var songsFC:StringMap;
+var songsComplete:StringMap;
+	
 	override public function create():Void
 	{
+		if(FlxG.save.data.songsCompleteFNC != null)
+        songsComplete = FlxG.save.data.songsCompleteFNC;
+    else
+        songsComplete = new StringMap();
+
+    if(FlxG.save.data.songsFCFNC != null)
+        songsFC = FlxG.save.data.songsFCFNC;
+    else
+        songsFC = new StringMap();
+
+    for(song in songs){ 
+        var FC = songsFC.get(song) == null ? false : songsFC.get(song);
+        var FINISHED = songsComplete.get(song) == null ? false : songsComplete.get(song);
+
+        songMap.set(song, {finished: FINISHED, fc: FC});
+    }    
+    
+    if(FlxG.save.data.CrunchinSongData == null)
+        FlxG.save.data.CrunchinSongData = songMap;
+
+    trace(FlxG.save.data.CrunchinSongData);
+    FlxG.save.flush();
+		
 		funkin.data.scripts.FunkinIris.InitLogger();
 
 		Paths.clearStoredMemory();
