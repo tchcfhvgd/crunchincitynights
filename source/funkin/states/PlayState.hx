@@ -3497,12 +3497,12 @@ class PlayState extends MusicBeatState
 		var songName = StringTools.replace(PlayState.SONG.song.toLowerCase(), ' ', '-');
 		if(FlxG.save.data.CrunchinSongData == null){
         FlxG.save.data.CrunchinSongData = new StringMap();
-        FlxG.save.data.CrunchinSongData.set(songName, {fc: PlayState.songMisses == 0, finished: true});
+        FlxG.save.data.CrunchinSongData.set(songName, {fc: PlayState.instance.songMisses == 0, finished: true});
     } 
     
     FlxG.save.data.CrunchinSongData.get(songName).finished = true;
     if(!FlxG.save.data.CrunchinSongData.get(songName).fc)
-        FlxG.save.data.CrunchinSongData.get(songName).fc = PlayState.songMisses == 0;
+        FlxG.save.data.CrunchinSongData.get(songName).fc = PlayState.instance.songMisses == 0;
     
     // trace(songName + ': ' + FlxG.save.data.CrunchinSongData.get(songName));
     FlxG.save.flush();
