@@ -4,6 +4,8 @@ package funkin.states.editors;
 import sys.io.File;
 #end
 
+import funkin.backend.MusicBeatSubstate;
+
 class HScriptSubstate extends MusicBeatSubstate
 {
 	public var instance:HScriptSubstate;
