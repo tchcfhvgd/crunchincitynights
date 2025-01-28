@@ -21,6 +21,7 @@ import flixel.util.FlxStringUtil;
 import funkin.backend.MusicBeatSubstate;
 import funkin.data.*;
 import funkin.states.*;
+import funkin.states.substates.*;
 import funkin.objects.*;
 
 class TrophyRoom extends MusicBeatState
