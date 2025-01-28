@@ -20,24 +20,24 @@ class Init extends FlxState
 	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
 	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
 
-var songMap:Map<String> = new Map<String>();
+var songMap:Map<String, String> = new Map<String, String>();
 var songs = ['crunch', 'milkyway', 'choke-a-lot', 'doubt', 'hope', 'reunion', 'smile', 'order-up', 'last-course', 'soundtest', 'alert', 'legacy', 'rumor', 'threat', 'rattled', 'crunchmix', 'yolo', 'harness', 'ravegirl'];
 
 // porting old save stuff over to modern save format
-var songsFC:Map<String>;
-var songsComplete:Map<String>;
+var songsFC:Map<String, String>;
+var songsComplete:Map<String, String>;
 	
 	override public function create():Void
 	{
 		if(FlxG.save.data.songsCompleteFNC != null)
         songsComplete = FlxG.save.data.songsCompleteFNC;
     else
-        songsComplete = new Map<String>();
+        songsComplete = new Map<String, String>();
 
     if(FlxG.save.data.songsFCFNC != null)
         songsFC = FlxG.save.data.songsFCFNC;
     else
-        songsFC = new Map<String>();
+        songsFC = new Map<String, String>();
 
     for(song in songs){ 
         var FC = songsFC.get(song) == null ? false : songsFC.get(song);
