@@ -46,9 +46,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	public var title:String;
 	public var rpcTitle:String;
 
-	public function new()
+	override function create()
 	{
-		super();
+		super.create();
 
 		if (title == null) title = 'Options';
 		if (rpcTitle == null) rpcTitle = 'Options Menu';
