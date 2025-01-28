@@ -24,20 +24,20 @@ var songMap:Map<String, String> = new Map<String, String>();
 var songs = ['crunch', 'milkyway', 'choke-a-lot', 'doubt', 'hope', 'reunion', 'smile', 'order-up', 'last-course', 'soundtest', 'alert', 'legacy', 'rumor', 'threat', 'rattled', 'crunchmix', 'yolo', 'harness', 'ravegirl'];
 
 // porting old save stuff over to modern save format
-var songsFC:Map<String, String>;
-var songsComplete:Map<String, String>;
+var songsFC:Map<String, Bool>;
+var songsComplete:Map<String, Bool>;
 	
 	override public function create():Void
 	{
 		if(FlxG.save.data.songsCompleteFNC != null)
         songsComplete = FlxG.save.data.songsCompleteFNC;
     else
-        songsComplete = new Map<String, String>();
+        songsComplete = new Map<String, Bool>();
 
     if(FlxG.save.data.songsFCFNC != null)
         songsFC = FlxG.save.data.songsFCFNC;
     else
-        songsFC = new Map<String, String>();
+        songsFC = new Map<String, Bool>();
 
     for(song in songs){ 
         var FC = songsFC.get(song) == null ? false : songsFC.get(song);
