@@ -224,7 +224,8 @@ var clicked = false;
         cg_bg.x += 0.5;
         cg_bg.y -= 0.5;
     }
-    lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, FlxMath(elapsed * 30, 0, 1)));
+    lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
+		
     if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
 
     scoreText.text = "WEEK SCORE:" + lerpScore;
