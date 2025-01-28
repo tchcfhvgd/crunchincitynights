@@ -19,7 +19,7 @@ import funkin.objects.*;
 
 class StoryMenuState extends MusicBeatState
 {
-    var controls = PlayerSettings.player1.controls;
+    //var controls = PlayerSettings.player1.controls;
 
 var scoreText:FlxText;
 
@@ -37,11 +37,6 @@ var fileNames:Array<String> = ['StorymodeCG', 'StorymodeTrollface', 'StorymodeEp
 var fileNames2:Array<String> = ['StorymodeCGSongs', 'TrollSongs', 'EpicSongs'];
 
 var characters:Array<String> = ['menu-cg', 'menu-depresstroll', 'menu-ef'];
-
-var grpWeekText:FlxTypedGroup;
-var grpWeekCharacters:FlxTypedGroup;
-
-var grpLocks:FlxTypedGroup;
 
 var difficultySelectors:FlxGroup;
 var sprDifficulty:FlxSprite;
