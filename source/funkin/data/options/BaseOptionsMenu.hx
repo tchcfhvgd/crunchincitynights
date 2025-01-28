@@ -34,7 +34,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	private var curSelected:Int = 0;
 	private var optionsArray:Array<Option>;
 
-	public var grpOptions:FlxTypedGroup<Alphabet>;
+	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private var checkboxGroup:FlxTypedGroup<CheckboxThingie>;
 	private var grpTexts:FlxTypedGroup<AttachedText>;
 
@@ -42,13 +42,12 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	private var descBox:FlxSprite;
 	private var descText:FlxText;
 
-	public var bg:FlxSprite;
 	public var title:String;
 	public var rpcTitle:String;
 
-	override function create()
+	public function new()
 	{
-		super.create();
+		super();
 
 		if (title == null) title = 'Options';
 		if (rpcTitle == null) rpcTitle = 'Options Menu';
@@ -56,14 +55,17 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		#if desktop
 		DiscordClient.changePresence(rpcTitle, null);
 		#end
-			
-		setUpScript('Options');
-			
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
-		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bg);
+
+	    var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('options/options_monitor'));
+    bg.updateHitbox();
+    bg.screenCenter();
+    bg.antialiasing = ClientPrefs.globalAntialiasing;
+    add(bg);
+    
+       var fg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('options/options_border'));
+    fg.screenCenter();
+    fg.antialiasing = ClientPrefs.globalAntialiasing;
+    add(fg);
 
 		// avoids lagspikes while scrolling through menus!
 		grpOptions = new FlxTypedGroup<Alphabet>();
@@ -130,11 +132,6 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		changeSelection();
 		reloadCheckboxes();
-
-		callOnScript('onCreatePost', []);
-		setOnScript('titleText', titleText);
-		setOnScript('grpOptions', grpOptions);
-		setOnScript('bg', bg);
 	}
 
 	public function addOption(option:Option)
