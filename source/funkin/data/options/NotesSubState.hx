@@ -51,11 +51,18 @@ class NotesSubState extends MusicBeatSubstate
 	{
 		super();
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
-		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bg);
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('options/options_monitor'));
+    bg.updateHitbox();
+    bg.screenCenter();
+    bg.color = FlxColor.WHITE;
+    bg.antialiasing = ClientPrefs.globalAntialiasing;
+    add(bg);
+    
+       var fg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('options/options_border'));
+    fg.screenCenter();
+    fg.antialiasing = ClientPrefs.globalAntialiasing;
+    add(fg);
+
 
 		blackBG = new FlxSprite(posX - 25).makeGraphic(870, 200, FlxColor.BLACK);
 		blackBG.alpha = 0.4;
