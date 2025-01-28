@@ -81,10 +81,12 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		descBox.alpha = 0.6;
 		add(descBox);
 
-		var titleText:Alphabet = new Alphabet(0, 0, title, true, false, 0, 0.6);
+		var titleText:Alphabet = new Alphabet(0, 0, "", true, false, 0, 0.6);
 		titleText.x += 60;
 		titleText.y += 40;
 		titleText.alpha = 0.4;
+		titleText.screenCenter(X);
+                titleText.text = title + '\nKEYBOARD';
 		add(titleText);
 
 		descText = new FlxText(50, 600, 1180, "", 32);
