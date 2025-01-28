@@ -4,6 +4,7 @@ import funkin.utils.SortUtil;
 import funkin.utils.DifficultyUtil;
 import funkin.game.RatingInfo;
 import haxe.ds.Vector;
+import haxe.ds.StringMap;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.events.KeyboardEvent;
 import flixel.FlxBasic;
@@ -3493,6 +3494,19 @@ class PlayState extends MusicBeatState
 	
 	public function endSong():Void
 	{
+		var songName = StringTools.replace(PlayState.SONG.song.toLowerCase(), ' ', '-');
+		if(FlxG.save.data.CrunchinSongData == null){
+        FlxG.save.data.CrunchinSongData = new StringMap();
+        FlxG.save.data.CrunchinSongData.set(songName, {fc: game.songMisses == 0, finished: true});
+    } 
+    
+    FlxG.save.data.CrunchinSongData.get(songName).finished = true;
+    if(!FlxG.save.data.CrunchinSongData.get(songName).fc)
+        FlxG.save.data.CrunchinSongData.get(songName).fc = game.songMisses == 0;
+    
+    // trace(songName + ': ' + FlxG.save.data.CrunchinSongData.get(songName));
+    FlxG.save.flush();
+		
 		// Should kill you if you tried to cheat
 		if (!startingSong)
 		{
