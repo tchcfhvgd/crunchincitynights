@@ -224,7 +224,7 @@ var clicked = false;
         cg_bg.x += 0.5;
         cg_bg.y -= 0.5;
     }
-    lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
+    lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, FlxMath.bound(elapsed * 30, 0, 1)));
 		
     if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
 
@@ -512,7 +512,7 @@ function selectWeek()
     PlayState.campaignScore = 0;
     PlayState.campaignMisses = 0;
 
-    new FlxTimer().start(0.25, ()->{
+    new FlxTimer().start(0.25, (tmr:FlxTimer)->{
         transition.animation.play('idle', false, false);
         transition.animation.finishCallback = ()->{
             new FlxTimer().start(1, function(tmr:FlxTimer) {
