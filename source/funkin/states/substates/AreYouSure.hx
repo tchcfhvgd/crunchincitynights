@@ -23,6 +23,7 @@ import funkin.backend.MusicBeatSubstate;
 import funkin.data.*;
 import funkin.states.*;
 import funkin.objects.*;
+import funkin.objects.video.*;
 
 class AreYouSure extends MusicBeatSubstate
 {
