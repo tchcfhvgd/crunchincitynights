@@ -80,6 +80,7 @@ class ControlsSubState extends MusicBeatSubstate
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('options/options_monitor'));
     bg.updateHitbox();
     bg.screenCenter();
+		bg.color = FlxColor.WHITE;
     bg.antialiasing = ClientPrefs.globalAntialiasing;
     add(bg);
     
