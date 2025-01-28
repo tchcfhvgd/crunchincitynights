@@ -514,7 +514,7 @@ function selectWeek()
 
     new FlxTimer().start(0.25, (tmr:FlxTimer)->{
         transition.animation.play('idle', false, false);
-        transition.animation.finishCallback = (tmr:FlxTimer)->{
+        transition.animation.finishCallback = (name:String)->{
             new FlxTimer().start(1, function(tmr:FlxTimer) {
                 LoadingState.loadAndSwitchState(new PlayState(), true);
                 // FreeplayState.destroyFreeplayVocals();
