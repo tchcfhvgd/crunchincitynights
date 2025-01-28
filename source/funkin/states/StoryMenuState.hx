@@ -16,6 +16,7 @@ import funkin.data.*;
 import funkin.states.*;
 import funkin.states.substates.*;
 import funkin.objects.*;
+import flixel.addons.display.FlxBackdrop;
 
 class StoryMenuState extends MusicBeatState
 {
