@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.input.keyboard.FlxKey;
 import lime.app.Application;
 import funkin.data.*;
+import haxe.ds.StringMap;
 
 using StringTools;
 typedef SongData =
