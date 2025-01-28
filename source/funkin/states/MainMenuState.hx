@@ -4,6 +4,7 @@ import funkin.data.options.OptionsState;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxObject;
+import flixel.FlxCamera;
 import flixel.text.FlxText;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxTimer;
@@ -37,11 +38,22 @@ var backbutton:FlxSprite;
 var transition:FlxSprite;
 var notice:FlxSprite;
 var actualnotice:FlxSprite;
+private var camGame:FlxCamera;
+var camFollow:FlxObject;
+var camFollowPos:FlxObject;
 
 	override function create()
 	{
+	    Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+	    
+	    camGame = new FlxCamera();
+	    FlxG.cameras.reset(camGame);
+	    FlxG.cameras.setDefaultDrawTarget(camGame, true);
+	    
+	    persistentUpdate = persistentDraw = true;
+	    
 	    Paths.currentModDirectory = 'crunchin';
-        WindowUtil.setTitle("Friday Night Crunchin' - Browsing the menus");
 
         camFollowPos = new FlxObject(0, 0, 1, 1);
         add(camFollowPos);
@@ -237,7 +249,7 @@ var fattyfatfat = false;
                     if(FlxG.mouse.justPressed && !selectedSomethin){
                         selectedSomethin = true;
                         FlxTween.tween(actualnotice, {alpha: 0}, 1, {ease: FlxEase.quartOut, onComplete: ()->{ 
-                            new FlxTimer().start(0.125, ()->{
+                            new FlxTimer().start(0.125, (tmr:FlxTimer)->{
                                 fattyfatfat = false;
                                 selectedSomethin = false;
                             });
