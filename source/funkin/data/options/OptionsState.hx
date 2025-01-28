@@ -37,6 +37,7 @@ var grpSprites:FlxTypedGroup;
 
 var selectorLeft:Alphabet;
 var selectorRight:Alphabet;
+var titleText2:Alphabet;
 
 var backbutton:FlxSprite;
 var transition:FlxSprite;
@@ -59,7 +60,7 @@ var transition:FlxSprite;
     add(grpSprites);
 
     titleText2 = new Alphabet(0, 0, "MOUSE", true, false, 0, 0.7);
-    titleText2.screenCenter(FlxAxes.X);
+    titleText2.screenCenter(X);
     titleText2.y += 70;
     titleText2.alpha = 1;
     add(titleText2);
