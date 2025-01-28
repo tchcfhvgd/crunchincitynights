@@ -25,6 +25,7 @@ class ClientPrefs
 	// we need to rethink the loading cuz the current setup does not work the best
 	public static var loadingThreads:Int = Math.floor(Std.parseInt(Sys.getEnv("NUMBER_OF_PROCESSORS")) / 2);
 	public static var multicoreLoading:Bool = false;
+	public static var shaders:Bool = true;
 
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
@@ -152,6 +153,7 @@ class ClientPrefs
 
 	public static function saveSettings()
 	{
+		FlxG.save.data.shaders = shaders;
 		FlxG.save.data.extraButtons = extraButtons;
 		FlxG.save.data.hitboxPos = hitboxPos;
 		FlxG.save.data.controlsAlpha = controlsAlpha;
@@ -241,6 +243,9 @@ class ClientPrefs
 		}
 		if (FlxG.save.data.gpuCaching != null) FlxG.save.data.gpuCaching = gpuCaching;
 
+		if(FlxG.save.data.shaders != null) {
+			shaders = FlxG.save.data.shaders;
+		}
 		if (FlxG.save.data.editorGradColors != null)
 		{
 			editorGradColors = FlxG.save.data.editorGradColors;
