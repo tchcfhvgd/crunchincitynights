@@ -4,6 +4,8 @@ import funkin.utils.DifficultyUtil;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.effects.FlxFlicker;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
@@ -22,6 +24,8 @@ class StoryMenuState extends MusicBeatState
 {
     //var controls = PlayerSettings.player1.controls;
 
+public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
+	
 var scoreText:FlxText;
 
 var lastDifficultyName:String = '';
@@ -80,7 +84,7 @@ var backbutton:FlxSprite;
     transition.animation.play('idle', false, true);
 
     var scale = 0.5;
-    cg_bg = new FlxBackdrop(Paths.image('storymode/StorymodeBG'), FlxAxes.XY, 0, 0);
+    cg_bg = new FlxBackdrop(Paths.image('storymode/StorymodeBG'), XY, 0, 0);
     cg_bg.screenCenter();
     // cg_bg.velocity.set(50,-50);
     cg_bg.scale.set(0.25,0.25);
