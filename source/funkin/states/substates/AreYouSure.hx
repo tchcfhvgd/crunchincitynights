@@ -74,7 +74,7 @@ var cantDoNothing = false;
         Application.current.window.alert('dude what are you doing. you dont even have save data. how did you manage to get here if you dont even have save data ??????? ITS CREATED ON THE TITLE SCREEN.', 'oopsies!');
     
     FlxG.save.flush();
-    WindowUtil.crashTheFuckingGame();
+    lime.system.System.exit(1);
 }
 
 function nextState(stateNumber:Int)
