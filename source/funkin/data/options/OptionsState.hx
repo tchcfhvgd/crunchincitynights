@@ -33,7 +33,7 @@ class OptionsState extends MusicBeatState
     var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
 
 var grpOptions:FlxTypedGroup<Alphabet>;
-var grpSprites:FlxTypedGroup<Alphabet>;
+var grpSprites:FlxTypedGroup<FlxSprite>;
 
 var selectorLeft:Alphabet;
 var selectorRight:Alphabet;
@@ -41,6 +41,8 @@ var titleText2:Alphabet;
 
 var backbutton:FlxSprite;
 var transition:FlxSprite;
+
+public static var onPlayState:Bool = false;
 
 	override function create()
 	{
@@ -124,6 +126,7 @@ var transition:FlxSprite;
         grpSprites.visible = true;
 	}
 
+	var movedBack = false;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
