@@ -21,6 +21,7 @@ class OverrideStateScript extends FunkinIris
 
 		set("state", flixel.FlxG.state);
 		set("add", FlxG.state.add);
+		set("openSubState", FlxG.state.openSubState);
 		set("remove", FlxG.state.remove);
 		set("insert", FlxG.state.insert);
 		set("members", FlxG.state.members);
