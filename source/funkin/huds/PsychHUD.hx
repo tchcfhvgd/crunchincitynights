@@ -23,6 +23,7 @@ class PsychHUD extends BaseHUD
 	var ratingSuffix:String = '';
 	var showRating:Bool = true;
 	var showCombo:Bool = true;
+	var qqqeb:Bool = false;
 
 	// TODO: Make combo shit change for week 6, the ground work is already there so incase someone else wants to come on in and mess w it.
 	override function init()
@@ -123,8 +124,16 @@ class PsychHUD extends BaseHUD
 	public function updateIconsPosition()
 	{
 		final iconOffset:Int = 26;
+		if(!qqqeb)
+		{
 		iconP1.x = healthBar.barCenter + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.barCenter - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		}
+		else
+		{
+		iconP1.x = healthBar.barCenter - (150 * iconP1.scale.x) / 2 - iconOffset * 2;
+		iconP2.x = healthBar.barCenter + (150 * iconP2.scale.x - 150) / 2 - iconOffset;
+		}
 	}
 
 	public function updateIconsScale(elapsed:Float)
@@ -314,6 +323,8 @@ class PsychHUD extends BaseHUD
 	{
 	   iconP1.flipX = true;
        iconP2.flipX = true;
-       healthBar.angle = 180;
+       
+       qqqeb = true;
+       
     }
 }
