@@ -52,7 +52,7 @@ class Paths
 		'assets/music/freakyMenu.$SOUND_EXT',
 		'assets/shared/music/breakfast.$SOUND_EXT',
 		'assets/shared/music/tea-time.$SOUND_EXT',
-		'assets/mobile/touchpad/bg.png'
+		'assets/shared/mobile/touchpad/bg.png'
 	];
 
 	/// haya I love you for the base cache dump I took to the max
@@ -83,9 +83,6 @@ class Paths
 		cpp.NativeGc.run(true);
 		#elseif hl
 		hl.Gc.major();
-		#end
-		#if cpp
-		cpp.vm.Gc.compact();
 		#end
 	}
 
