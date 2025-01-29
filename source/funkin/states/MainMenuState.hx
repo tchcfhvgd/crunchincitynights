@@ -275,7 +275,7 @@ var fattyfatfat = false;
                 FlxTween.tween(actualnotice, {alpha: 1}, 1, {ease: FlxEase.quartOut});
 
                 FlxTween.num(2, 1280 * 1.025, 1, {ease: FlxEase.quartOut, onUpdate: (t:FlxTween)->{
-                    actualnotice.setGraphicSize(t.scale);
+                    actualnotice.setGraphicSize(1280 * 1.025);
                 }, onComplete: (qqqeb:FlxTween)->{ 
                     selectedSomethin = false;
                     fattyfatfat = true;
