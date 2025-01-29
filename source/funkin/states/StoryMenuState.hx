@@ -219,6 +219,7 @@ var clicked = false;
         Conductor.songPosition = FlxG.sound.music.time;
 
     FlxG.mouse.visible = false;
+    updateText();
 
     if(cg_bg != null){
         cg_bg.x += 0.5;
@@ -457,7 +458,6 @@ var clicked = false;
                     curCharacter.x -= 325;
             }
     }
-
     updateText();
 }
 
