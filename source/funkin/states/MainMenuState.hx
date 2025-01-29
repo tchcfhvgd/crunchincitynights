@@ -272,7 +272,7 @@ var fattyfatfat = false;
                 actualnotice.alpha = 0;
                 FlxTween.tween(actualnotice, {alpha: 1}, 1, {ease: FlxEase.quartOut});
 
-                FlxTween.num(2, 1280 * 1.025, 1, {ease: FlxEase.quartOut, onUpdate: (t:Float)->{
+                FlxTween.num(2, 1280 * 1.025, 1, {ease: FlxEase.quartOut, onUpdate: (t)->{
                     actualnotice.setGraphicSize(t);
                 }, onComplete: (qqqeb:FlxTween)->{ 
                     selectedSomethin = false;
