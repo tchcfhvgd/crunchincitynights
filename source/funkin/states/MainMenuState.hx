@@ -42,6 +42,9 @@ private var camGame:FlxCamera;
 var camFollow:FlxObject;
 var camFollowPos:FlxObject;
 
+var freeplayAvailable:Bool = true;
+		
+
 	override function create()
 	{
 	    Paths.clearStoredMemory();
@@ -92,7 +95,6 @@ var camFollowPos:FlxObject;
 
         // Trophy.loadTrophies();
         
-        var freeplayAvailable:Bool = true;
         // trace(freeplayAvailable);
     
         var lockedsprite:FlxSprite = new FlxSprite(0, 0);
@@ -248,7 +250,7 @@ var fattyfatfat = false;
                 }else{
                     if(FlxG.mouse.justPressed && !selectedSomethin){
                         selectedSomethin = true;
-                        FlxTween.tween(actualnotice, {alpha: 0}, 1, {ease: FlxEase.quartOut, onComplete: (timer:FlxTimer)->{ 
+                        FlxTween.tween(actualnotice, {alpha: 0}, 1, {ease: FlxEase.quartOut, onComplete: (qqqeb:FlxTween)->{ 
                             new FlxTimer().start(0.125, (tmr:FlxTimer)->{
                                 fattyfatfat = false;
                                 selectedSomethin = false;
@@ -272,7 +274,7 @@ var fattyfatfat = false;
 
                 FlxTween.num(2, 1280 * 1.025, 1, {ease: FlxEase.quartOut, onUpdate: (t)->{
                     actualnotice.setGraphicSize(t.scale);
-                }, onComplete: (timer:FlxTimer)->{ 
+                }, onComplete: (qqqeb:FlxTween)->{ 
                     selectedSomethin = false;
                     fattyfatfat = true;
                 }});
