@@ -58,8 +58,10 @@ var freeplayAvailable:Bool = true;
 	    
 	    Paths.currentModDirectory = 'crunchin';
 
-        camFollowPos = new FlxObject(0, 0, 1, 1);
-        add(camFollowPos);
+        camFollow = new FlxObject(0, 0, 1, 1);
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+		add(camFollow);
+		add(camFollowPos);
     
         var scale:Float = 0.475;
         camGame.zoom = 0.98;
