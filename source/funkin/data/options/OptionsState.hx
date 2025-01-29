@@ -111,14 +111,31 @@ public static var onPlayState:Bool = false;
     add(transition);
     transition.animation.play('idle', false, true);
 
-		ClientPrefs.saveSettings();
+    ClientPrefs.saveSettings();
 
-		super.create();
+    addTouchPad("NONE", "A_B_X_Y");
+    touchPad.buttonB.y += 450;
+    touchPad.buttonA.y += 450;
+    touchPad.buttonX.x -= 190;
+    touchPad.buttonY.x -= 315;
+    touchPad.buttonX.y -= 160;
+    touchPad.buttonY.y -= 310;
+		
+    super.create();
 	}
 
 	override function closeSubState()
 	{
 		super.closeSubState();
+		
+		removeTouchPad();
+		addTouchPad("NONE", "A_B_X_Y");
+    touchPad.buttonB.y += 450;
+    touchPad.buttonA.y += 450;
+    touchPad.buttonX.x -= 190;
+    touchPad.buttonY.x -= 315;
+    touchPad.buttonX.y -= 160;
+    touchPad.buttonY.y -= 310;
 		ClientPrefs.saveSettings();
 		FlxG.camera.zoom = 1;
         titleText2.text = 'MOUSE';
@@ -139,7 +156,7 @@ public static var onPlayState:Bool = false;
         {
             spr.scale.set(1.05, 1.05);
 
-            if(FlxG.mouse.pressed)
+            if(FlxG.mouse.justPressed)
             {
                 openSelectedSubstate(options[spr.ID]);
             }
@@ -172,6 +189,16 @@ public static var onPlayState:Bool = false;
             FlxG.switchState(new MainMenuState());
         });
     }
+	
+	if (touchPad != null && touchPad.buttonX.justPressed) {
+			touchPad.active = touchPad.visible = persistentUpdate = false;
+			openSubState(new mobile.MobileControlSelectSubState());
+	}
+
+	if (touchPad != null && touchPad.buttonY.justPressed) {
+			touchPad.active = touchPad.visible = persistentUpdate = false;
+			openSubState(new mobile.options.MobileOptionsSubState());
+	}
 	}
 	
 	function openSelectedSubstate(label:String) {
@@ -179,6 +206,8 @@ public static var onPlayState:Bool = false;
     {
         titleText2.visible = false;
         grpSprites.visible = false;
+
+	removeTouchPad();
     }
 
     titleText2.text = 'KEYBOARD';
