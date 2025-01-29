@@ -49,7 +49,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	{
 		super();
 
-		if (title == null) title = 'Options';
+		if (title == null) title = 'Options' + '\nKEYBOARD';
 		if (rpcTitle == null) rpcTitle = 'Options Menu';
 
 		#if desktop
@@ -82,12 +82,12 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		descBox.alpha = 0.6;
 		add(descBox);
 
-		var titleText:Alphabet = new Alphabet(0, 0, "", true, false, 0, 0.6);
+		var titleText:Alphabet = new Alphabet(0, 0, title, true, false, 0, 0.6);
 		titleText.x += 60;
 		titleText.y += 40;
 		titleText.alpha = 0.4;
 		titleText.screenCenter(X);
-                titleText.text = title + '\nKEYBOARD';
+                //titleText.text = title + '\nKEYBOARD';
 		add(titleText);
 
 		descText = new FlxText(50, 600, 1180, "", 32);
@@ -135,6 +135,8 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		changeSelection();
 		reloadCheckboxes();
+
+		addTouchPad("LEFT_FULL", "A_B_C");
 	}
 
 	public function addOption(option:Option)
@@ -271,7 +273,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				}
 			}
 
-			if (controls.RESET)
+			if (controls.RESET || touchPad.buttonC.justPressed)
 			{
 				for (i in 0...optionsArray.length)
 				{
