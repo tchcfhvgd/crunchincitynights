@@ -33,7 +33,15 @@ class PsychHUD extends BaseHUD
 		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.downScroll ? 0.89 : 0.11), 'healthBar', function() return parent.health, parent.healthBounds.min,
 			parent.healthBounds.max);
 		healthBar.screenCenter(X);
+		
+		if(!qqqeb)
+		{
 		healthBar.leftToRight = false;
+		}
+		else
+		{
+		healthBar.leftToRight = true;
+		}
 		healthBar.scrollFactor.set();
 		healthBar.visible = !ClientPrefs.hideHud;
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
