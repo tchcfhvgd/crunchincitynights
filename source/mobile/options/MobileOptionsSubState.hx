@@ -23,8 +23,7 @@
 package mobile.options;
 
 import flixel.input.keyboard.FlxKey;
-import options.BaseOptionsMenu;
-import options.Option;
+import funkin.data.options.*;
 #if sys
 import sys.io.File;
 #end
@@ -81,11 +80,13 @@ class MobileOptionsSubState extends BaseOptionsMenu
 			addOption(option);
 		}
 
+		/*
 		#if android
 		option = new Option('Storage Type', 'Which folder Psych Engine should use?\n(CHANGING THIS MAKES DELETE YOUR OLD FOLDER!!)', 'storageType', 'string',
 			'EXTERNAL_DATA', storageTypes);
 		addOption(option);
 		#end
+                */
 
 		super();
 	}
