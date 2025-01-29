@@ -92,7 +92,7 @@ var camFollowPos:FlxObject;
 
         // Trophy.loadTrophies();
         
-        freeplayAvailable = true;
+        var freeplayAvailable:Bool = true;
         // trace(freeplayAvailable);
     
         var lockedsprite:FlxSprite = new FlxSprite(0, 0);
@@ -160,7 +160,7 @@ var camFollowPos:FlxObject;
         }
         FlxG.camera.follow(camFollowPos, null, 1);
 
-        ClientPrefs.saveSettings();
+        //ClientPrefs.saveSettings();
     
         actualnotice = new FlxSprite().loadGraphic(Paths.image('mainmenu/notice'));
         actualnotice.scale.set(0.7, 0.7);
