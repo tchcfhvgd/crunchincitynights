@@ -309,4 +309,11 @@ class PsychHUD extends BaseHUD
 				startDelay: Conductor.crotchet * 0.001
 			});
 	}
+	
+	override function flipBar()
+	{
+	   iconP1.flipX = true;
+       iconP2.flipX = true;
+       healthBar.angle = 180;
+    }
 }
