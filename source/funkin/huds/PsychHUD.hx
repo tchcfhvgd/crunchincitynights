@@ -310,7 +310,7 @@ class PsychHUD extends BaseHUD
 			});
 	}
 	
-	override function flipBar()
+	public function flipBar()
 	{
 	   iconP1.flipX = true;
        iconP2.flipX = true;
