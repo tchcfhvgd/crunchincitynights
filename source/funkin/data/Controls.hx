@@ -10,6 +10,7 @@ import flixel.input.actions.FlxActionSet;
 import flixel.input.gamepad.FlxGamepadButton;
 import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.keyboard.FlxKey;
+import funkin.backend.MusicBeatSubstate;
 import mobile.input.MobileInputID;
 
 enum abstract Action(String) to String from String
