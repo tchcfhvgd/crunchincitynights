@@ -248,7 +248,7 @@ var fattyfatfat = false;
                 }else{
                     if(FlxG.mouse.justPressed && !selectedSomethin){
                         selectedSomethin = true;
-                        FlxTween.tween(actualnotice, {alpha: 0}, 1, {ease: FlxEase.quartOut, onComplete: ()->{ 
+                        FlxTween.tween(actualnotice, {alpha: 0}, 1, {ease: FlxEase.quartOut, onComplete: (timer:FlxTimer)->{ 
                             new FlxTimer().start(0.125, (tmr:FlxTimer)->{
                                 fattyfatfat = false;
                                 selectedSomethin = false;
@@ -271,8 +271,8 @@ var fattyfatfat = false;
                 FlxTween.tween(actualnotice, {alpha: 1}, 1, {ease: FlxEase.quartOut});
 
                 FlxTween.num(2, 1280 * 1.025, 1, {ease: FlxEase.quartOut, onUpdate: (t)->{
-                    actualnotice.setGraphicSize(t.value);
-                }, onComplete: ()->{ 
+                    actualnotice.setGraphicSize(t.scale);
+                }, onComplete: (timer:FlxTimer)->{ 
                     selectedSomethin = false;
                     fattyfatfat = true;
                 }});
