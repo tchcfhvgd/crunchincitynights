@@ -200,6 +200,5 @@ typedef ButtonsData =
 enum ExtraActions
 {
 	SINGLE;
-	DOUBLE;
 	NONE;
 }
