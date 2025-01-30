@@ -402,7 +402,7 @@ var songs:Array<String> = [];
 		super.closeSubState();
 		removeTouchPad();
 		addTouchPad("NONE", "E");
-    touchPad.buttonE.y += 200;
+    touchPad.buttonE.y += 230;
     addTouchPadCamera();
 	}
 }
