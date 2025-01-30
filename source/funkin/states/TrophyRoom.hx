@@ -170,6 +170,7 @@ var songs:Array<String> = [];
     transition.animation.play('idle', false, true);
 	
     addTouchPad("NONE", "E");
+    touchPad.buttonE.y += 200;
     addTouchPadCamera();
 			
     super.create();
@@ -401,5 +402,7 @@ var songs:Array<String> = [];
 		super.closeSubState();
 		removeTouchPad();
 		addTouchPad("NONE", "E");
+    touchPad.buttonE.y += 200;
+    addTouchPadCamera();
 	}
 }
