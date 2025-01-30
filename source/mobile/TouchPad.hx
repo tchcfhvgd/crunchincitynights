@@ -126,7 +126,7 @@ class TouchPad extends MobileInputManager implements IMobileControls
 			case SINGLE:
 				if(PlayState.qqqeb)
 				{
-				if (MobileData.mode !== 3)
+				if (MobileData.mode != 3)
 				{
 				add(buttonExtra = createButton((DPad == 'LEFT_FULL') ? 1149 : 0, FlxG.height - 137, 's', 0xFF0066FF));
 				//setExtrasPos();
