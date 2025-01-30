@@ -11,7 +11,7 @@ import funkin.data.Controls.KeyboardScheme;
 class ClientPrefs
 {
 	// Mobile and Mobile Controls Releated
-	public static var extraButtons:String = "NONE"; // mobile extra button option
+	public static var extraButtons:String = "SINGLE"; // mobile extra button option
 	public static var hitboxPos:Bool = true; // hitbox extra button position option
 	public static var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
 	public static var screensaver:Bool = false;
@@ -74,7 +74,7 @@ class ClientPrefs
 	public static var noteSkin:String = 'Vanilla';
 	public static var noReset:Bool = false;
 	public static var healthBarAlpha:Float = 1;
-	public static var controllerMode:Bool = false;
+	public static var controllerMode:Bool = true;
 	public static var hitsoundVolume:Float = 0;
 	public static var pauseMusic:String = 'Tea Time';
 	public static var gameplaySettings:Map<String, Dynamic> = [
