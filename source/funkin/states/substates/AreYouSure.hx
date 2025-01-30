@@ -62,7 +62,10 @@ var cantDoNothing = false;
 
     nextState(state);
 	   
-		super.create();
+    addTouchPad("NONE", "A_B");
+    addTouchPadCamera();
+	    
+    super.create();
 	}
 	
 	function die(){
@@ -130,8 +133,8 @@ function backState(stateNumber:Int)
 	 
 	    if(!cantDoNothing)
     {
-        var spacebar = FlxG.keys.justPressed.SPACE;
-        var escape = FlxG.keys.justPressed.ESCAPE;
+        var spacebar = FlxG.keys.justPressed.SPACE || touchPad.buttonA.justPressed;
+        var escape = FlxG.keys.justPressed.ESCAPE || touchPad.buttonB.justPressed;
         if(spacebar)
         {
             nextState(state);
