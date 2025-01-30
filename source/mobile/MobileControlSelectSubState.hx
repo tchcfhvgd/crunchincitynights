@@ -63,7 +63,7 @@ class MobileControlSelectSubState extends MusicBeatSubstate
 	{
 		super();
 		if (ClientPrefs.extraButtons != 'NONE')
-			options.push('Pad-Extra');
+			//options.push('Pad-Extra');
 
 		bg = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true,
 			FlxColor.fromRGB(FlxG.random.int(0, 255), FlxG.random.int(0, 255), FlxG.random.int(0, 255)),
@@ -258,7 +258,7 @@ class MobileControlSelectSubState extends MusicBeatSubstate
 		super.update(elapsed);
 	}
 
-	function changeControls(?type:Int, ?extraMode:Bool = false)
+	function changeControls(?type:Int, ?extraMode:Bool = true)
 	{
 		if (type == null)
 			type = curOption;
@@ -324,7 +324,7 @@ class MobileControlSelectSubState extends MusicBeatSubstate
 			}
 			else
 			{
-				positionText.text = 'S X: ${control.touchPad.buttonExtra.x} - Y: ${control.touchPad.buttonExtra.y}\n\n\n\nG X: ${control.touchPad.buttonExtra2.x} - Y: ${control.touchPad.buttonExtra2.y}';
+				positionText.text = 'S X: ${control.touchPad.buttondodge.x} - Y: ${control.touchPad.buttondodge.y}';
 			}
 			positionText.setPosition(0, (((positionTextBg.height - positionText.height) / 2) + positionTextBg.y));
 		}
