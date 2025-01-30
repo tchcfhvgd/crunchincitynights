@@ -274,15 +274,15 @@ class Controls extends FlxActionSet
 
 	public var NOTE_DODGE(get, never):Bool;
 
-	inline function get_NOTE_DODGE() return _note_dodge.check();
+	inline function get_NOTE_DODGE() return _note_dodge.check() || MusicBeatState.getState().mobileControls.buttonExtra.pressed;
 
 	public var NOTE_DODGE_P(get, never):Bool;
 
-	inline function get_NOTE_DODGE_P() return _note_dodgeP.check();
+	inline function get_NOTE_DODGE_P() return _note_dodgeP.check() || MusicBeatState.getState().mobileControls.buttonExtra.justPressed;
 
 	public var NOTE_DODGE_R(get, never):Bool;
 
-	inline function get_NOTE_DODGE_R() return _note_dodgeR.check();
+	inline function get_NOTE_DODGE_R() return _note_dodgeR.check() || MusicBeatState.getState().mobileControls.buttonExtra.justReleased;
 
 	@:noCompletion
 	private function get_mobileC():Bool
