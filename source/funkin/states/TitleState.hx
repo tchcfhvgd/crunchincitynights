@@ -448,7 +448,7 @@ class TitleState extends MusicBeatState
 				case 15:
 					addMoreText('NIGHT');
 				case 16:
-					addMoreText('CRUNCHIN\');
+					addMoreText('CRUNCHIN\'');
 
 				case 17:
 					skipIntro();
