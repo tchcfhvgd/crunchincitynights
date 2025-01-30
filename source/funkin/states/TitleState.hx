@@ -98,14 +98,7 @@ class TitleState extends MusicBeatState
 		#elseif CHARTING
 		FlxG.switchState(new ChartingState());
 		#else
-		if (FlxG.save.data.flashing == null && !FlashingState.leftState)
-		{
-			FlxTransitionableState.skipNextTransIn = true;
-			FlxTransitionableState.skipNextTransOut = true;
-			FlxG.switchState(new FlashingState());
-		}
-		else
-		{
+
 			if (initialized) startIntro();
 			else
 			{
@@ -113,7 +106,6 @@ class TitleState extends MusicBeatState
 					startIntro();
 				});
 			}
-		}
 		#end
 	}
 
@@ -456,7 +448,7 @@ class TitleState extends MusicBeatState
 				case 15:
 					addMoreText('NIGHT');
 				case 16:
-					addMoreText('CRUNCHIN');
+					addMoreText('CRUNCHIN\');
 
 				case 17:
 					skipIntro();
