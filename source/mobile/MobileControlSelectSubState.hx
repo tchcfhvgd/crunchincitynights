@@ -39,6 +39,7 @@ import mobile.TouchButton;
 import mobile.TouchUtil;
 import mobile.objects.Alphabet;
 import funkin.backend.*;
+import funkin.states.*;
 
 using StringTools;
 
