@@ -169,7 +169,10 @@ var songs:Array<String> = [];
     add(transition);
     transition.animation.play('idle', false, true);
 	
-		super.create();
+    addTouchPad("NONE", "E");
+    //addTouchPadCamera();
+			
+    super.create();
 	}
 	
 	function changeSel(value:Int)
@@ -337,11 +340,12 @@ var songs:Array<String> = [];
         clicked = false;
     }
 
-    if(FlxG.keys.justPressed.E)
+    if(FlxG.keys.justPressed.E || touchPad.buttonE.justPressed)
     {
         //Trophy.clearTrophies();
         // super.openSubState(new AreYouSureSubState());
         openSubState(new AreYouSure());
+	removeTouchPad();
     }
 
     /*if (controls.BACK && !selectedSomethin)
@@ -392,4 +396,10 @@ var songs:Array<String> = [];
 
 		super.update(elapsed);
         }
+
+	override function closeSubState() {
+		super.closeSubState();
+		removeTouchPad();
+		addTouchPad("NONE", "E");
+	}
 }
