@@ -3982,7 +3982,8 @@ class PlayState extends MusicBeatState
 				controls.NOTE_LEFT_P,
 				controls.NOTE_DOWN_P,
 				controls.NOTE_UP_P,
-				controls.NOTE_RIGHT_P
+				controls.NOTE_RIGHT_P,
+				controls.NOTE_DODGE_P
 			];
 			if (controlArray.contains(true))
 			{
@@ -4040,7 +4041,8 @@ class PlayState extends MusicBeatState
 				controls.NOTE_LEFT_R,
 				controls.NOTE_DOWN_R,
 				controls.NOTE_UP_R,
-				controls.NOTE_RIGHT_R
+				controls.NOTE_RIGHT_R,
+				controls.NOTE_DODGE_R
 			];
 			if (controlArray.contains(true))
 			{
