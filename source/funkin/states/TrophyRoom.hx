@@ -170,7 +170,7 @@ var songs:Array<String> = [];
     transition.animation.play('idle', false, true);
 	
     addTouchPad("NONE", "E");
-    //addTouchPadCamera();
+    addTouchPadCamera();
 			
     super.create();
 	}
