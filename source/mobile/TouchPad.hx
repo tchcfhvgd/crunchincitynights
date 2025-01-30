@@ -75,8 +75,7 @@ class TouchPad extends MobileInputManager implements IMobileControls
 	public var buttonX:TouchButton = new TouchButton(0, 0, [MobileInputID.X]);
 	public var buttonY:TouchButton = new TouchButton(0, 0, [MobileInputID.Y]);
 	public var buttonZ:TouchButton = new TouchButton(0, 0, [MobileInputID.Z]);
-	public var buttonExtra:TouchButton = new TouchButton(0, 0, [MobileInputID.EXTRA_1]);
-	public var buttonExtra2:TouchButton = new TouchButton(0, 0, [MobileInputID.EXTRA_2]);
+	public var buttondodge:TouchButton = new TouchButton(0, 0, [MobileInputID.NOTE_DODGE]);
 
 	public var instance:MobileInputManager;
 	public var onButtonDown:FlxTypedSignal<TouchButton->Void> = new FlxTypedSignal<TouchButton->Void>();
@@ -123,12 +122,8 @@ class TouchPad extends MobileInputManager implements IMobileControls
 		switch (Extra)
 		{
 			case SINGLE:
-				add(buttonExtra = createButton(0, FlxG.height - 137, 's', 0xFF0066FF));
-				setExtrasPos();
-			case DOUBLE:
-				add(buttonExtra = createButton(0, FlxG.height - 137, 's', 0xFF0066FF));
-				add(buttonExtra2 = createButton(FlxG.width - 132, FlxG.height - 137, 'g', 0xA6FF00));
-				setExtrasPos();
+				add(buttondodge = createButton(0, FlxG.height - 137, 's', 0xFF0066FF));
+					setExtrasPos();
 			case NONE: // nothing
 		}
 
