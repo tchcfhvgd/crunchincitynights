@@ -182,6 +182,8 @@ class PlayState extends MusicBeatState
 	
 	public static var curStage:String = 'stage';
 	
+	public static var qqqeb:Bool = false;
+	
 	/**
 		Container that holds all bg elements and the characters
 	**/
@@ -575,6 +577,12 @@ class PlayState extends MusicBeatState
 		stageData = stage.stageData;
 		setStageData(stageData); // change to setter
 		setOnScripts('stage', stage);
+		
+		switch (curStage)
+		{
+			case 'yoloStage':
+            qqqeb = true;
+		}
 		
 		// STAGE SCRIPTS
 		stage.buildStage();
@@ -4737,6 +4745,7 @@ class PlayState extends MusicBeatState
 	override function destroy()
 	{
 		preventLuaRemove = true;
+		qqqeb = false;
 		
 		for (script in funkyScripts)
 		{
