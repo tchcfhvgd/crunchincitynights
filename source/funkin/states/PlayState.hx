@@ -578,10 +578,13 @@ class PlayState extends MusicBeatState
 		setStageData(stageData); // change to setter
 		setOnScripts('stage', stage);
 		
+		if(ClientPrefs.mechanics)
+		{
 		switch (curStage)
 		{
 			case 'yoloStage':
             qqqeb = true;
+		}
 		}
 		
 		// STAGE SCRIPTS
@@ -774,8 +777,8 @@ class PlayState extends MusicBeatState
 		touchPad.visible = true;
 		#end
 		addMobileControls();
-		mobileControls.onButtonDown.add(onButtonPress);
-		mobileControls.onButtonUp.add(onButtonRelease);
+		//mobileControls.onButtonDown.add(onButtonPress);
+		//mobileControls.onButtonUp.add(onButtonRelease);
 		
 		generateSong(SONG.song);
 		modManager = new ModManager(this);
