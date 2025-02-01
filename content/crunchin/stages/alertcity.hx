@@ -203,7 +203,7 @@ function onLoad(){
     alertComic.alpha = 0.000001;
 
     blackScreen = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
-    blackScreen.cameras = [game.camHUD];
+    //blackScreen.cameras = [game.camHUD];
     blackScreen.screenCenter();
     blackScreen.scrollFactor.set();
     blackScreen.alpha = 0.000001;
@@ -238,7 +238,7 @@ function onCreatePost(){
     add(ifuAlertEnding);
 
     alertComic.cameras = [game.camHUD];
-    blackScreen.cameras = [game.camHUD];
+    //blackScreen.cameras = [game.camHUD];
     ifuAlertEnding2.cameras = [game.camHUD];
     ifuAlertEnding.cameras = [game.camHUD];
 
@@ -624,7 +624,7 @@ function onEvent(eventName, value1, value2){
             ifuAlertEnding2.setGraphicSize(Std.int(ifuAlertEnding2.width * 3));
             ifuAlertEnding.alpha = 1;
         case 'Alert Cutscene 3':
-            FlxTween.tween(blackScreen, {alpha: 1}, 3.5);
+            FlxTween.tween(alertComic, {alpha: 0}, 3.5);
 
             game.camZooming = false;
             FlxTween.tween(game.camHUD, {zoom: game.camHUD.zoom + 0.25}, 3.5, {ease: FlxEase.quartIn, onComplete: ()->{ game.camHUD.zoom = 1; }});
