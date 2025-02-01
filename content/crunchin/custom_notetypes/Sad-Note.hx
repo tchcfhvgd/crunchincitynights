@@ -11,6 +11,8 @@ function setupNote(note){
 
 var game = PlayState.instance;
 function noteMiss(note){
+    if(note.noteType == 'Sad-Note') 
+    {
     game.camHUD.flash(FlxColor.fromRGB(100, 100, 255, 255), 0.5, null, true);
 
     var curSpeed = game.songSpeed;
@@ -21,5 +23,6 @@ function noteMiss(note){
     else
     {
         FlxTween.tween(game, {songSpeed: curSpeed - 1}, 1, {ease: FlxEase.linear});
+    }
     }
 }
