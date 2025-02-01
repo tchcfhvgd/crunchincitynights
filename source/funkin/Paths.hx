@@ -84,6 +84,10 @@ class Paths
 		#elseif hl
 		hl.Gc.major();
 		#end
+
+		#if cpp
+		cpp.vm.Gc.compact();
+		#end
 	}
 
 	// define the locally tracked assets
