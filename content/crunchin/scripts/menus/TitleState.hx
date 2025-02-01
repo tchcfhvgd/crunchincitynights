@@ -1,6 +1,6 @@
 import funkin.states.MainMenuState;
 import flixel.addons.transition.FlxTransitionableState;
-import funkin.states.HScriptState;
+import funkin.states.editors.HScriptState;
 import funkin.states.TitleState;
 import lime.graphics.Image;
 
@@ -16,7 +16,49 @@ function onCreatePost(){
     WindowUtil.setTitle("Friday Night Crunchin' - Browsing the menus");
 }
 
+typedef SongData =
+{
+    finished:Bool,
+    fc:Bool
+}
+
+var songMap:StringMap = new StringMap();
+var songs = ['crunch', 'milkyway', 'choke-a-lot', 'doubt', 'hope', 'reunion', 'smile', 'order-up', 'last-course', 'soundtest', 'alert', 'legacy', 'rumor', 'threat', 'rattled', 'crunchmix', 'yolo', 'harness', 'ravegirl'];
+
+// porting old save stuff over to modern save format
+var songsFC:StringMap;
+var songsComplete:StringMap;
+
 function onStartIntro(){
+    if(FlxG.save.data.qqqeb == null)
+        FlxG.save.data.qqqeb = false;
+    
+    if(FlxG.save.data.qqqeb == false)
+    {
+    if(FlxG.save.data.songsCompleteFNC != null)
+        songsComplete = FlxG.save.data.songsCompleteFNC;
+    else
+        songsComplete = new StringMap();
+
+    if(FlxG.save.data.songsFCFNC != null)
+        songsFC = FlxG.save.data.songsFCFNC;
+    else
+        songsFC = new StringMap();
+
+    for(song in songs){ 
+        var FC = songsFC.get(song) == null ? false : songsFC.get(song);
+        var FINISHED = songsComplete.get(song) == null ? false : songsComplete.get(song);
+
+        songMap.set(song, {finished: FINISHED, fc: FC});
+    }    
+    
+    if(FlxG.save.data.CrunchinSongData == null)
+        FlxG.save.data.CrunchinSongData = songMap;
+
+    trace(FlxG.save.data.CrunchinSongData);
+    }
+    FlxG.save.flush();
+
     WindowUtil.setTitle("Friday Night Crunchin'");
 
     // var icon:Image = Image.fromFile(Paths.file('images/crunchinicon.ico'));
@@ -109,7 +151,7 @@ function onUpdate(elapsed){
             if(FlxG.mouse.overlaps(playbutton))
             {
                 playbutton.animation.play('hover');
-                if(!transitioning && FlxG.mouse.justPressed)
+                if(!transitioning && FlxG.mouse.pressed)
                 {
                     FlxG.camera.flash(FlxColor.WHITE, 1);
                     FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
@@ -124,6 +166,8 @@ function onUpdate(elapsed){
                     transition.animation.play('idle');
                     transition.animation.finishCallback  = ()->{
                         FlxG.switchState(new HScriptState('OiCunt'));
+                        FlxG.save.data.qqqeb = true;
+                        FlxG.save.flush();
                         closedState = true;
                     }
                 }
