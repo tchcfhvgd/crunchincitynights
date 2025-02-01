@@ -38,6 +38,7 @@ function onLoad(){
 
     var sky:FlxBackdrop = new FlxBackdrop(Paths.image(stageDirectory + 'city/sky'), FlxAxes.X, 0, 0);
     sky.ID = 7;
+    sky.scale.set(2,2);
     sky.y = roadHeight - (sky.height + 300);
 
     var road:FlxBackdrop = new FlxBackdrop(Paths.image(stageDirectory + 'city/road'), FlxAxes.X, 0, 0);
@@ -50,10 +51,12 @@ function onLoad(){
 
     var bg2:FlxBackdrop = new FlxBackdrop(Paths.image(stageDirectory + 'city/bg1'), FlxAxes.X, 0, 0);
     bg2.ID = 3;
+    bg2.scale.set(1.33,1.33);
     bg2.y = roadHeight - (bg2.height + 300);
 
     var bg3:FlxBackdrop = new FlxBackdrop(Paths.image(stageDirectory + 'city/bg2'), FlxAxes.X, 0, 0);
     bg3.ID = 3;
+    bg3.scale.set(1.33,1.33);
     bg3.y = roadHeight - (bg3.height + 150);
 
     add(sky);
@@ -68,12 +71,13 @@ function onLoad(){
     sky2.ID = 8;
     sky2.visible = false;
     sky2.y = (roadHeight + 200) - (sky.height);
-    sky2.y -= 800;
+    sky2.y -= 1450;
 
     road2 = new FlxBackdrop(Paths.image(stageDirectory + 'coolercity/road'), FlxAxes.X, 0, 0);
     road2.ID = 2;
+    road2.scale.set(1.33,1.33);
     road2.visible = false;
-    road2.y = roadHeight - 450;
+    road2.y = roadHeight - 380;
     
     add(sky2);
     add(road2);    
