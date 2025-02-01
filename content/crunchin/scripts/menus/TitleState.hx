@@ -1,6 +1,6 @@
 import funkin.states.MainMenuState;
 import flixel.addons.transition.FlxTransitionableState;
-import funkin.states.editors.HScriptState;
+import funkin.states.HScriptState;
 import funkin.states.TitleState;
 import lime.graphics.Image;
 
@@ -151,7 +151,7 @@ function onUpdate(elapsed){
             if(FlxG.mouse.overlaps(playbutton))
             {
                 playbutton.animation.play('hover');
-                if(!transitioning && FlxG.mouse.pressed)
+                if(!transitioning && FlxG.mouse.justPressed)
                 {
                     FlxG.camera.flash(FlxColor.WHITE, 1);
                     FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
