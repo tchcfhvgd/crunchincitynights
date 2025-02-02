@@ -71,7 +71,7 @@ function onLoad(){
     sky2.ID = 8;
     sky2.visible = false;
     sky2.y = (roadHeight + 200) - (sky.height);
-    sky2.y -= 1450;
+    sky2.y -= 1480;
 
     road2 = new FlxBackdrop(Paths.image(stageDirectory + 'coolercity/road'), FlxAxes.X, 0, 0);
     road2.ID = 2;
